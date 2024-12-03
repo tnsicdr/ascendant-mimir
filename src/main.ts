@@ -20,7 +20,9 @@ fastify.register(AutoLoad, {
 	dir: path.join(__dirname, 'routes'),
 });
 
-fastify.listen({ port: process.env.PORT as unknown as number }).catch((err) => {
-	fastify.log.error(err);
-	process.exit(1);
-});
+fastify
+	.listen({ host: '0.0.0.0', port: process.env.PORT as unknown as number })
+	.catch((err) => {
+		fastify.log.error(err);
+		process.exit(1);
+	});
